@@ -7,6 +7,7 @@ require_relative 'raindrops'
 # 816e537 Merge pull request #113
 
 class RaindropsTest < Minitest::Test
+
   def test_1
     assert_equal '1', Raindrops.convert(1)
   end
