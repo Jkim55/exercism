@@ -1,15 +1,38 @@
 class Raindrops
   VERSION = 1
 
-  def self.convert(drop_count)
-    @sound = ""
-    make_sound(drop_count)
-    @sound == "" ? drop_count.to_s : @sound
-  end
+  # def self.sound_library
+  #   {
+  #     3 => "Pling",
+  #     5 => "Plang",
+  #     7 => "Plong"
+  #   }
+  # end
+  #
+  # def self.convert(num)
+  #   sound = ""
+  #   sound_library.each do |key, value|
+  #     sound << value if num % key == 0
+  #   end
+  #   checkString_validity(sound, num)
+  # end
+  #
+  # def self.checkString_validity(sound, num)
+  #   sound.empty? ? num.to_s : sound
+  # end
+# end
 
-  def self.make_sound(drop_count)
-    @sound += 'Pling' if drop_count % 3 == 0
-    @sound += 'Plang' if drop_count % 5 == 0
-    @sound += 'Plong' if drop_count % 7 == 0
+require 'pry'
+
+obj = { 3 => "Pling", 5 => "Plang", 7 => "Plong"}
+
+obj = obj.map do |num, sound|
+  if num.odd?
+    {num + 1 => sound}
+  else
+    {num => sound}
   end
 end
+
+new_obj = obj.inject(:merge)
+p new_obj
