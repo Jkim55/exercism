@@ -17,7 +17,7 @@ require 'pry'
 
   def square_of_sum
     base_arr = setup_arr(num)
-    # binding.pry
+    binding.pry
     base_arr.inject(:+)**2 # base_arr = arr of num decremented
   end
 end
