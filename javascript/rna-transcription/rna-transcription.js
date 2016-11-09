@@ -1,22 +1,19 @@
-function dnaTranscriber() {
+var DnaTranscriber = function () {};
+
+DnaTranscriber.prototype.toRna = function(dnaString) {
+  var transcriber = {
+    'C':'G',
+    'G':'C',
+    'A':'U',
+    'T':'A'
+  }
+
+  var translatedRNA = dnaString.split("").map(function(nucleotides) {
+    return transcriber[nucleotides];
+  }).join("");
+
+  return translatedRNA;
 };
 
-dnaTranscriber.prototype.toRna = function (dna){
-  var dnaCompiler = []
-  switch (dna) {
-  case 'C':
-    return 'G';
-    break;
-  case 'G':
-    return 'C';
-    break;
-  case 'A':
-    return 'U';
-    break;
-  case 'T':
-    return 'A';
-    break;
-  }
-}
 
-module.exports = dnaTranscriber;
+module.exports = DnaTranscriber;
