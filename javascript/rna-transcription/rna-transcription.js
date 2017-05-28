@@ -1,18 +1,17 @@
-var DnaTranscriber = function () {};
+function DnaTranscriber (){
+  this.rnaKey = {
+    C:'G',
+    G:'C',
+    A:'U',
+    T:'A'
+  }
+};
 
 DnaTranscriber.prototype.toRna = function(dnaString) {
-  var transcriber = {
-    'C':'G',
-    'G':'C',
-    'A':'U',
-    'T':'A'
-  }
-
-  var translatedRNA = dnaString.split("").map(function(nucleotides) {
+  var transcriber = this.rnaKey
+  return dnaString.split("").map(function(nucleotides) {
     return transcriber[nucleotides];
-  }).join("");
-
-  return translatedRNA;
+  }).join("")
 };
 
 
