@@ -37,6 +37,10 @@ ehthumbs.db
 Thumbs.db
 
 **.gradle
+**/*/gradle
+**/*/gradlew
+**/*/gradlew.bat
+
 **build/
 **!gradle/wrapper/gradle-wrapper.jar
 
