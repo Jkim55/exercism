@@ -1,26 +1,28 @@
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class RnaTranscription {
-    HashMap<Character, Character> transcriber = createTranscriber();
+    HashMap<String, String> transcriber = createTranscriber();
 
     public String transcribe(String dnaStrand) {
-      char[] dnaArray = dnaStrand.toCharArray();
-      for(int i=0; i<dnaArray.length; i++){
-         dnaArray[i] = transcribeRNA(dnaArray[i]);
-      }
-      return new String(dnaArray);
+        if (dnaStrand == null || dnaStrand.isEmpty()) {
+            return "";
+        }
+        return Arrays.stream(dnaStrand.split(""))
+                .map(c -> transcribeRNA(c))
+                .reduce("", (a, b) -> a + b);
     }
 
-    private char transcribeRNA(char nucleotides){
-        return transcriber.get(nucleotides);
+    private String transcribeRNA(String nucleotide){
+        return transcriber.get(nucleotide);
     }
 
-    private static HashMap<Character, Character> createTranscriber() {
-        HashMap<Character,Character> transcriberMap = new HashMap<Character,Character>();
-        transcriberMap.put('C', 'G');
-        transcriberMap.put('G', 'C');
-        transcriberMap.put('T', 'A');
-        transcriberMap.put('A', 'U');
+    private static HashMap<String, String> createTranscriber() {
+        HashMap<String,String> transcriberMap = new HashMap<String, String>();
+        transcriberMap.put("C", "G");
+        transcriberMap.put("G", "C");
+        transcriberMap.put("T", "A");
+        transcriberMap.put("A", "U");
         return transcriberMap;
     }
 
