@@ -19,7 +19,6 @@ install the necessary dependencies:
 http://exercism.io/languages/ecmascript
 
 ## Requirements
-
 Install assignment dependencies:
 
 ```bash
@@ -32,6 +31,7 @@ Execute the tests with:
 
 ```bash
 $ npm test
+$ gulp test
 ```
 
 In many test suites all but the first test have been skipped.
@@ -45,4 +45,3 @@ Inspired by the 'Deaf Grandma' exercise in Chris Pine's Learn to Program tutoria
 
 ## Submitting Incomplete Problems
 It's possible to submit an incomplete solution so you can see how others have completed the exercise.
-
