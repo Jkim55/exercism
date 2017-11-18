@@ -1,13 +1,7 @@
-function isLeapYear (year){
-  if (year % 400 === 0 ) {
-		return true
-	} else if (year % 100 === 0) {
-		return false
-	} else if (year % 4 ===0) {
-		return true
-	} else {
-		return false
-	}
-}
+export default function isLeapYear (year){
+  const is400thYear = year % 400 === 0
+  const is100thYear = year % 100 === 0
+  const is4thYear = year % 4 ===0
 
-export default isLeapYear;
+  return is400thYear || !is100thYear && is4thYear
+}

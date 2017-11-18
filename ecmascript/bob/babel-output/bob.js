@@ -12,49 +12,45 @@ var Bob = (function () {
   function Bob() {
     _classCallCheck(this, Bob);
 
-    this.phrases = {
-      yell: 'Whoa, chill out!',
-      question: 'Sure.',
-      silence: 'Fine. Be that way!',
-      whatever: 'Whatever.'
+    this.response = {
+      annoyed: 'Whoa, chill out!',
+      nonchalent: 'Sure.',
+      angry: 'Fine. Be that way!',
+      disengaged: 'Whatever.'
     };
   }
 
   _createClass(Bob, [{
     key: 'hey',
     value: function hey(message) {
-      if (this.isShouty(message)) {
-        return this.phrases["yell"];
-      } else if (this.isAsking(message)) {
-        return this.phrases["question"];
-      } else if (this.isSilent(message)) {
-        return this.phrases["silence"];
+      if (speaker.isShouty(message)) {
+        return this.response.annoyed;
+      } else if (speaker.isAsking(message)) {
+        return this.response.nonchalent;
+      } else if (speaker.isSilent(message)) {
+        return this.response.angry;
       } else {
-        return this.phrases['whatever'];
+        return this.response.disengaged;
       }
-    }
-  }, {
-    key: 'isShouty',
-    value: function isShouty(input) {
-      var re = /[a-zA-Z]/;
-      return re.test(input) && input === input.toUpperCase();
-    }
-  }, {
-    key: 'isAsking',
-    value: function isAsking(input) {
-      var re = /\?$/;
-      return re.test(input);
-    }
-  }, {
-    key: 'isSilent',
-    value: function isSilent(input) {
-      var re = /[a-zA-Z0-9]/;
-      return !re.test(input);
     }
   }]);
 
   return Bob;
 })();
+
+var speaker = {
+  isShouty: function isShouty(input) {
+    return (/[a-zA-Z]/.test(input) && input === input.toUpperCase()
+    );
+  },
+  isAsking: function isAsking(input) {
+    return (/\?$/.test(input)
+    );
+  },
+  isSilent: function isSilent(input) {
+    return !/[a-zA-Z0-9]/.test(input);
+  }
+};
 
 exports['default'] = Bob;
 module.exports = exports['default'];

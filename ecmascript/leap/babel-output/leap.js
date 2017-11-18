@@ -1,19 +1,16 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
+exports["default"] = isLeapYear;
+
 function isLeapYear(year) {
-	if (year % 400 === 0) {
-		return true;
-	} else if (year % 100 === 0) {
-		return false;
-	} else if (year % 4 === 0) {
-		return true;
-	} else {
-		return false;
-	}
+  var is400thYear = year % 400 === 0;
+  var is100thYear = year % 100 === 0;
+  var is4thYear = year % 4 === 0;
+
+  return is400thYear || !is100thYear && is4thYear;
 }
 
-exports["default"] = isLeapYear;
 module.exports = exports["default"];
