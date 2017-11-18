@@ -1,18 +1,37 @@
 class Bob {
   constructor (){
-    this.phrases = {
-      yell:      'Whoa, chill out!',
-      question:  'Sure.',
-      silence:   'Fine. Be that way!',
-      whatever:  'Whatever.'
+    this.response = {
+      annoyed:'Whoa, chill out!',
+      nonchalent:'Sure.',
+      angry:'Fine. Be that way!',
+      disengaged:'Whatever.'
     }
 
   }
 
   hey(message) {
-    return this.phrases[whatever]
+    if (speaker.isShouty(message))  {
+        return this.response.annoyed
+    } else if (speaker.isAsking(message)) {
+        return this.response.nonchalent
+    } else if (speaker.isSilent(message)) {
+      return this.response.angry
+    } else {
+      return this.response.disengaged
+    }
   }
-
 }
 
-export default Bob;
+const speaker = {
+  isShouty: function (input) {
+    return /[a-zA-Z]/.test(input) && input === input.toUpperCase();
+  },
+  isAsking: function (input){
+    return /\?$/.test(input)
+  },
+  isSilent: function(input){
+    return !/[a-zA-Z0-9]/.test(input)
+  }
+}
+
+export default Bob
