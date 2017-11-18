@@ -1,25 +1,17 @@
 class Cipher {
   constructor(key = generate.key()){
-    this.key = generate.validKey(key);
+    this.key = generate.validationCheck(key)
   }
 
   encode(secretmsg){
     return [...secretmsg]
-      .map((char, i) => {
-        const keyIndex = this.key[i]
-          ? generate.alpha.indexOf(this.key[i])
-          : generate.alpha.indexOf(this.key[i % this.key.length])
-        return generate.alpha.charAt((generate.alpha.indexOf(char) + keyIndex) % 26)
-      })
+      .map((char, i) => generate.shift(generate.alpha.indexOf(char), generate.keyIndex(this.key, i), "right"))
       .join('')
   }
 
   decode(gooblygook){
     return [...gooblygook]
-      .map((char, i) => {
-        const index = generate.alpha.indexOf(char) - generate.alpha.indexOf(this.key[i])
-        return index >= 0 ? generate.alpha.charAt(index) : generate.alpha.charAt(index + 26)
-      })
+      .map((char, i) => generate.shift(generate.alpha.indexOf(char), generate.alpha.indexOf(this.key[i]), "left"))
       .join('')
   }
 }
@@ -34,11 +26,23 @@ const generate = {
     }
     return val
   },
-  validKey: function(key){
+  validationCheck: function(key){
     if (/[a-z]+/.test(key)){
       return key
     }
     throw new Error('Bad key');
+  },
+  keyIndex: function(key, currentIdx){
+    return key[currentIdx] ? generate.alpha.indexOf(key[currentIdx]) : generate.alpha.indexOf(key[currentIdx % key.length])
+  },
+  shift: function(msgIndex, keyIndex, direction){
+    if (direction === "right"){
+      return generate.alpha.charAt((msgIndex + keyIndex) % 26)
+    } else if (direction === "left"){
+    return msgIndex - keyIndex >= 0
+    ? generate.alpha.charAt(msgIndex - keyIndex)
+    : generate.alpha.charAt(msgIndex - keyIndex + 26)
+    }
   }
 }
 
