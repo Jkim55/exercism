@@ -4,7 +4,10 @@ class Transcriptor {
   }
 
   translate(char) {
-    return translationKey[char]
+    if (translationKey.hasOwnProperty(char)){
+      return translationKey[char]
+    }
+    throw new Error('Invalid input DNA.')
   }
 }
 

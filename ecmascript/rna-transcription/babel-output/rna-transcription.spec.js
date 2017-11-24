@@ -28,4 +28,22 @@ describe('Transcriptor', function () {
   it('transcribes all dna nucleotides to their rna complements', function () {
     expect(transcriptor.toRna('ACGTGGTCTTAA')).toEqual('UGCACCAGAAUU');
   });
+
+  it('correctly handles invalid input', function () {
+    expect(function () {
+      return transcriptor.toRna('U');
+    }).toThrow(new Error('Invalid input DNA.'));
+  });
+
+  it('correctly handles completely invalid input', function () {
+    expect(function () {
+      return transcriptor.toRna('XXX');
+    }).toThrow(new Error('Invalid input DNA.'));
+  });
+
+  it('correctly handles partially invalid input', function () {
+    expect(function () {
+      return transcriptor.toRna('ACGTXXXCTTAA');
+    }).toThrow(new Error('Invalid input DNA.'));
+  });
 });

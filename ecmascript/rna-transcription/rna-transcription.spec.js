@@ -24,4 +24,21 @@ describe('Transcriptor', () => {
         .toEqual('UGCACCAGAAUU');
   });
 
+  it('correctly handles invalid input', () => {
+    expect(() => transcriptor.toRna('U')).toThrow(
+      new Error('Invalid input DNA.')
+    );
+  });
+
+  it('correctly handles completely invalid input', () => {
+    expect(() => transcriptor.toRna('XXX')).toThrow(
+      new Error('Invalid input DNA.')
+    );
+  });
+
+  it('correctly handles partially invalid input', () => {
+    expect(() => transcriptor.toRna('ACGTXXXCTTAA')).toThrow(
+      new Error('Invalid input DNA.')
+    );
+  });
 });

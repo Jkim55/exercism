@@ -18,7 +18,7 @@ class Cipher {
 
 const generate = {
   alpha: 'abcdefghijklmnopqrstuvwxyz',
-  num: function(){return Math.floor(Math.random() * this.alpha.length)},
+  num: function (){return Math.floor(Math.random() * this.alpha.length)},
   key: function (){
     let val = ""
     while (val.length < 100) {
