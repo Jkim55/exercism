@@ -4,38 +4,38 @@ class SpaceAge {
     }
     
     onEarth() {
-        return this.calculateinEarthYears(terrestrialOrbitConversion.earth)
+        return this.ageInPlanetCentricYears(terrestrialOrbitConversion.earth)
     }
 
     onMercury() {
-        return this.calculateinEarthYears(terrestrialOrbitConversion.mercury)
+        return this.ageInPlanetCentricYears(terrestrialOrbitConversion.mercury)
     }
 
     onVenus() {
-        return this.calculateinEarthYears(terrestrialOrbitConversion.venus)
+        return this.ageInPlanetCentricYears(terrestrialOrbitConversion.venus)
     }
 
     onMars() {
-        return this.calculateinEarthYears(terrestrialOrbitConversion.mars)
+        return this.ageInPlanetCentricYears(terrestrialOrbitConversion.mars)
     }
 
     onJupiter() {
-        return this.calculateinEarthYears(terrestrialOrbitConversion.jupiter)
+        return this.ageInPlanetCentricYears(terrestrialOrbitConversion.jupiter)
     }
 
     onSaturn() {
-        return this.calculateinEarthYears(terrestrialOrbitConversion.saturn)
+        return this.ageInPlanetCentricYears(terrestrialOrbitConversion.saturn)
     }
 
     onUranus() {
-        return this.calculateinEarthYears(terrestrialOrbitConversion.uranus)
+        return this.ageInPlanetCentricYears(terrestrialOrbitConversion.uranus)
     }
 
     onNeptune() {
-        return this.calculateinEarthYears(terrestrialOrbitConversion.neptune)
+        return this.ageInPlanetCentricYears(terrestrialOrbitConversion.neptune)
     }
 
-    calculateinEarthYears(orbitInEarthYears){
+    ageInPlanetCentricYears(orbitInEarthYears){
         return parseFloat(((this.seconds/31557600)/orbitInEarthYears).toFixed(2))
     }
 }
