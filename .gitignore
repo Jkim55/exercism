@@ -41,6 +41,10 @@ Thumbs.db
 **/*/gradlew
 **/*/gradlew.bat
 
+
+**/*/node_modules
+**/*/yarn.lock
+
 **build/
 **!gradle/wrapper/gradle-wrapper.jar
 

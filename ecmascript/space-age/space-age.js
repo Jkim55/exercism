@@ -4,43 +4,43 @@ class SpaceAge {
     }
     
     onEarth() {
-        return this.ageInPlanetCentricYears(terrestrialOrbitConversion.earth)
+        return this.calculatecalculatePlanetSpecificYears(terraOrbitConversion.earth)
     }
 
     onMercury() {
-        return this.ageInPlanetCentricYears(terrestrialOrbitConversion.mercury)
+        return this.calculatecalculatePlanetSpecificYears(terraOrbitConversion.mercury)
     }
 
     onVenus() {
-        return this.ageInPlanetCentricYears(terrestrialOrbitConversion.venus)
+        return this.calculatecalculatePlanetSpecificYears(terraOrbitConversion.venus)
     }
 
     onMars() {
-        return this.ageInPlanetCentricYears(terrestrialOrbitConversion.mars)
+        return this.calculatecalculatePlanetSpecificYears(terraOrbitConversion.mars)
     }
 
     onJupiter() {
-        return this.ageInPlanetCentricYears(terrestrialOrbitConversion.jupiter)
+        return this.calculatecalculatePlanetSpecificYears(terraOrbitConversion.jupiter)
     }
 
     onSaturn() {
-        return this.ageInPlanetCentricYears(terrestrialOrbitConversion.saturn)
+        return this.calculatecalculatePlanetSpecificYears(terraOrbitConversion.saturn)
     }
 
     onUranus() {
-        return this.ageInPlanetCentricYears(terrestrialOrbitConversion.uranus)
+        return this.calculatecalculatePlanetSpecificYears(terraOrbitConversion.uranus)
     }
 
     onNeptune() {
-        return this.ageInPlanetCentricYears(terrestrialOrbitConversion.neptune)
+        return this.calculatecalculatePlanetSpecificYears(terraOrbitConversion.neptune)
     }
 
-    ageInPlanetCentricYears(orbitInEarthYears){
-        return parseFloat(((this.seconds/31557600)/orbitInEarthYears).toFixed(2))
+    calculatecalculatePlanetSpecificYears(orbitInTerraYears){
+        return parseFloat(((this.seconds/31557600)/orbitInTerraYears).toFixed(2))
     }
 }
 
-const terrestrialOrbitConversion = {
+const terraOrbitConversion = {
     earth: 1,
     mercury: 0.2408467,
     venus: 0.61519726,
@@ -52,3 +52,30 @@ const terrestrialOrbitConversion = {
 }
 
 export default SpaceAge
+
+
+// // ********************************************************** COOL SOLUTION
+// const terraOrbitConversion = {
+// 	Earth: 1,
+// 	Mercury: 0.2408467,
+// 	Venus: 0.61519726,
+// 	Mars: 1.8808158,
+// 	Jupiter: 11.862615,
+// 	Saturn: 29.447498,
+// 	Uranus: 84.016846,
+// 	Neptune: 164.79132
+// }
+
+// class SpaceAge {
+// 	constructor(seconds) {
+// 		this.seconds = seconds
+
+//         this.calculatePlanetSpecificYears = orbitInTerraYears => parseFloat(((this.seconds/31557600) /orbitInTerraYears).toFixed(2))
+        
+// 		for(const planet in terraOrbitConversion) {
+// 			return this[`on${planet}`] = () => this.calculatePlanetSpecificYears(terraOrbitConversion[planet])
+// 		}
+// 	}
+// }
+
+// export default SpaceAge
